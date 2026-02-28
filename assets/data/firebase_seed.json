@@ -1,0 +1,109 @@
+{
+  "problems": {
+    "prob_1": {
+      "title": "Two Sum",
+      "description": "Given an integer array nums and an integer target, return indices of two numbers such that they add up to target.",
+      "difficulty": "Easy",
+      "topic": "Arrays + Hashing",
+      "hint1": "Brute force checks all pairs in O(n^2).",
+      "hint2": "Use a HashMap from value -> index while scanning once.",
+      "finalApproach": "Iterate once, compute complement = target - nums[i], check map first, then store nums[i].",
+      "sampleJavaCode": "public int[] twoSum(int[] nums, int target) {\n  Map<Integer,Integer> map = new HashMap<>();\n  for (int i = 0; i < nums.length; i++) {\n    int c = target - nums[i];\n    if (map.containsKey(c)) return new int[]{map.get(c), i};\n    map.put(nums[i], i);\n  }\n  return new int[]{};\n}"
+    },
+    "prob_2": {
+      "title": "Valid Parentheses",
+      "description": "Given a string containing just ()[]{} determine if input string is valid.",
+      "difficulty": "Easy",
+      "topic": "Stack",
+      "hint1": "Use LIFO behavior.",
+      "hint2": "Push opens, pop and validate on closes.",
+      "finalApproach": "Scan chars, use stack to ensure each close matches latest open.",
+      "sampleJavaCode": "public boolean isValid(String s){\n  Deque<Character> st = new ArrayDeque<>();\n  for(char ch: s.toCharArray()){\n    if(ch=='('||ch=='['||ch=='{') st.push(ch);\n    else {\n      if(st.isEmpty()) return false;\n      char o=st.pop();\n      if((ch==')'&&o!='(')||(ch==']'&&o!='[')||(ch=='}'&&o!='{')) return false;\n    }\n  }\n  return st.isEmpty();\n}"
+    },
+    "prob_3": {
+      "title": "Merge Intervals",
+      "description": "Merge all overlapping intervals.",
+      "difficulty": "Medium",
+      "topic": "Sorting",
+      "hint1": "Sort by start.",
+      "hint2": "Compare current interval with last merged interval.",
+      "finalApproach": "After sorting, either extend previous merged range or append new interval.",
+      "sampleJavaCode": "// sort + linear merge"
+    },
+    "prob_4": {
+      "title": "Binary Search",
+      "description": "Search target in sorted array.",
+      "difficulty": "Easy",
+      "topic": "Binary Search",
+      "hint1": "Shrink search half each step.",
+      "hint2": "Use mid = l + (r-l)/2.",
+      "finalApproach": "Compare target with nums[mid], move left or right boundary.",
+      "sampleJavaCode": "// iterative binary search"
+    },
+    "prob_5": {
+      "title": "Longest Substring Without Repeating",
+      "description": "Find length of longest substring without repeating characters.",
+      "difficulty": "Medium",
+      "topic": "Sliding Window",
+      "hint1": "Maintain window with unique chars.",
+      "hint2": "Move left pointer when duplicate found.",
+      "finalApproach": "Track latest index of each char and update left boundary.",
+      "sampleJavaCode": "// sliding window with hashmap"
+    },
+    "prob_6": {
+      "title": "Kth Largest Element",
+      "description": "Return kth largest element in array.",
+      "difficulty": "Medium",
+      "topic": "Heap",
+      "hint1": "Min-heap of size k.",
+      "hint2": "Poll when heap grows beyond k.",
+      "finalApproach": "Heap keeps k largest seen; top is kth largest.",
+      "sampleJavaCode": "// PriorityQueue solution"
+    },
+    "prob_7": {
+      "title": "Climbing Stairs",
+      "description": "Count distinct ways to reach n-th step with 1 or 2 steps.",
+      "difficulty": "Easy",
+      "topic": "Dynamic Programming",
+      "hint1": "Relation resembles Fibonacci.",
+      "hint2": "dp[i] = dp[i-1] + dp[i-2].",
+      "finalApproach": "Use iterative DP with O(1) space.",
+      "sampleJavaCode": "// iterative fibonacci"
+    },
+    "prob_8": {
+      "title": "Number of Islands",
+      "description": "Count connected components of 1s in grid.",
+      "difficulty": "Medium",
+      "topic": "Graph Traversal",
+      "hint1": "Visit each cell once.",
+      "hint2": "DFS/BFS flood fill connected land.",
+      "finalApproach": "When unvisited land found, run DFS and increment count.",
+      "sampleJavaCode": "// dfs in 4 directions"
+    },
+    "prob_9": {
+      "title": "LRU Cache",
+      "description": "Design data structure with O(1) get and put.",
+      "difficulty": "Hard",
+      "topic": "Design",
+      "hint1": "Need both ordering and key lookup.",
+      "hint2": "HashMap + doubly linked list.",
+      "finalApproach": "Move accessed node to front; evict from tail when capacity exceeded.",
+      "sampleJavaCode": "// custom DLL + HashMap"
+    },
+    "prob_10": {
+      "title": "Top K Frequent Elements",
+      "description": "Return k most frequent elements.",
+      "difficulty": "Medium",
+      "topic": "Hashing + Heap",
+      "hint1": "Count frequencies first.",
+      "hint2": "Use min-heap of size k or bucket sort.",
+      "finalApproach": "Build frequency map then maintain heap with top frequencies.",
+      "sampleJavaCode": "// frequency map + heap"
+    }
+  },
+  "dailyChallenges": {
+    "2026-01-01": "prob_1",
+    "2026-01-02": "prob_2",
+    "2026-01-03": "prob_3"
+  }
+}
